@@ -1,0 +1,36 @@
+{
+  "name": "string-utilz",
+  "version": "1.0.0",
+  "description": "String utilities for JavaScript.",
+  "main": "lib/string-utilz.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MaddHacker/string-utilz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MaddHacker/string-utilz/issues",
+    "email": "hacker@maddhacker.com"
+  },
+  "keywords": [
+    "strings",
+    "string utilities",
+    "string utils",
+    "string-utils",
+    "string management",
+    "string format",
+    "formatting"
+  ],
+  "author": "MaddHacker <hacker@maddhacker.com> (http://www.maddhacker.com)",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/MaddHacker/string-utilz#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^18.1.0"
+  },
+  "jest": {
+    "verbose": true
+  }
+}
