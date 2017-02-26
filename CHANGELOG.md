@@ -1,3 +1,6 @@
+# CURRENT - v1.0.1
+- Update [Jest](https://www.npmjs.com/package/jest) version
+
 # 2017-02-26 - v1.0.0
 - Update test names to more closely match lib names
 - Rework [string-utilz.js](lib/string-utilz.js) to optionally add prototypes
