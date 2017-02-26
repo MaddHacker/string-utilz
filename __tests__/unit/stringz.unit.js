@@ -16,7 +16,7 @@
 
 'use strict';
 
-require('../../lib/stringz');
+require('../../lib/string-utilz');
 
 describe('Strings (Unit)', function () {
     /**
