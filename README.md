@@ -15,7 +15,7 @@ String management for JavaScript.
 [![npm Version](https://badge.fury.io/js/string-utilz.svg)](https://badge.fury.io/js/string-utilz)
 
 ## Why *Another* Output/Logging tool?
-Several npms utilize multiple dependencies, and lead to code bloat.  There are also several modules on the market that are very opinionated (e.g. force you to do certain things) or are focused on a single form of logging/output.  This tool aims to be a lightweight, flexible solution that allows for output to one or many sources as the user needs.
+Several npms utilize multiple dependencies, and lead to code bloat.  There are also several modules on the market that are very opinionated (e.g. force you to do certain things) or are focused on a single form of string management.  This tool aims to be a lightweight, flexible solution that allows for infinitely customizable options to suit user needs.
 
 ## Getting Started
 - Install [the npm](https://www.npmjs.com/package/string-utilz) in your project: `npm install --save string-utilz`
