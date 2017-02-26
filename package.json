@@ -28,7 +28,7 @@
   "homepage": "https://github.com/MaddHacker/string-utilz#readme",
   "dependencies": {},
   "devDependencies": {
-    "jest": "^18.1.0"
+    "jest": "^19.0.2"
   },
   "jest": {
     "verbose": true
