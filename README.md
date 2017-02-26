@@ -19,8 +19,19 @@ Several npms utilize multiple dependencies, and lead to code bloat.  There are a
 
 ## Getting Started
 - Install [the npm](https://www.npmjs.com/package/string-utilz) in your project: `npm install --save string-utilz`
-- Require the library where needed: `const O = require('string-utilz');`
+- Require the library where needed: `const stringz = require('string-utilz');`
 - Manage strings in a much more seamless way.
+
+# Default behavior
+By default, you will need to use the object returned from the `require` statement to manage strings.  As an example:
+```
+const stringz = require('string-utilz');
+stringz.startsWith('Bob','B'); // true
+stringz.endsWith('Bob','o'); // false
+```
+
+## #addStringPrototypes()
+If you are so inclined to let `string-utilz` try to prototype the `String` object, feel free to call the `stringz.addStringPrototypes()` method.  This will *non-destructively* add each of the functions to the `String` object, if there is no existing definition.  This can safely be called multiple times, without concern.
 
 # String helpers
 Depending on the version of Node.js (or where your application is running), you might or might not have access to `String#startsWith(str)` and `String#endsWith(str)`.  This module adds that functionality, as well as methods for `String#containsIgnoreCase(str)` and `String#replaceAll(oldStr,newStr)`.  These are documented below:
@@ -80,9 +91,6 @@ String.fmt('The %{0} %{0} %{0}', 'quick', 'brown', 'fox'); // 'The quick quick q
 String.fmt('The %{s} %{s} %{s}', 'quick', 'brown', 'fox'); // 'The quick brown fox'
 
 ```
-
-## Important Note about Stringz
-These are non-destructive functional additions.  EACH of these will check to ensure there is not already functionality that does the same thing, and only add the functionality if it doesn't exist.  This means this is safe to use in any of your environments.
 
 # Slack
 This is one of several projects that are in the works, so feel free to reach out on [Slack](https://maddhacker.slack.com/).  Please email `slack at maddhacker dot com` for an invite.
