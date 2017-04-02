@@ -247,6 +247,102 @@ describe('String Utilz (Unit)', function () {
     });
 
     /**
+    * check string#times(num)
+    */
+    describe('#times(num)', function () {
+        it('should return the string when multiplied by 1', function () {
+            expect('*'.times(1)).toBe('*');
+        });
+        it('should return double the string when multiplied by 2', function () {
+            expect('*'.times(2)).toBe('**');
+        });
+        it('should return multiples of the string when multiplied', function () {
+            expect('*'.times(10)).toBe('**********');
+        });
+        it('should return multiples of a complex string', function () {
+            expect('quick brown'.times(2)).toBe('quick brownquick brown');
+        });
+        it('should return null when multipled by 0', function () {
+            expect('*'.times(0)).toBe(null);
+        });
+        it('should return itself when multipled by a negative number', function () {
+            expect('*'.times(-2)).toBe('*');
+        });
+    });
+
+    /**
+    * check direct access to stringz#times(tmpStr, num)
+    */
+    describe('stringz#times(tmpStr, num)', function () {
+        it('should return the string when multiplied by 1', function () {
+            expect(stringz.times('*', 1)).toBe('*');
+        });
+    });
+
+    /**
+    * check string#pad(num, char)
+    */
+    describe('#pad(num, char)', function () {
+        it('should use a space when no char is provided', function () {
+            expect('*'.pad(1)).toBe('* ');
+        });
+        it('should return the given string when num is 0', function () {
+            expect('*'.pad(0)).toBe('*');
+            expect('*'.pad(0, '-')).toBe('*');
+        });
+        it('should pad multiple times', function () {
+            expect('*'.pad(5, '-')).toBe('*-----');
+        });
+        it('should pad to the left when negative', function () {
+            expect('*'.pad(-5, '-')).toBe('-----*');
+        });
+        it('should handle multiple chars', function () {
+            expect('*'.pad(-2, 'bob')).toBe('bobbob*');
+            expect('*'.pad(2, 'bob')).toBe('*bobbob');
+            expect('*'.pad(2, '$$')).toBe('*$$$$');
+        });
+    });
+
+    /**
+    * check direct access to stringz#pad(tmpStr, num, char)
+    */
+    describe('stringz#pad(tmpStr, num, char)', function () {
+        it('should return the string when multiplied by 1', function () {
+            expect(stringz.pad('*', 1)).toBe('* ');
+        });
+    });
+
+    /**
+    * check string#chop(num)
+    */
+    describe('#chop(num)', function () {
+        it('should use a positive number to start at the end', function () {
+            expect('testing'.chop(1)).toBe('testin');
+        });
+        it('should use a negative number to start at the beginning', function () {
+            expect('testing'.chop(-1)).toBe('esting');
+        });
+        it('should remove the required characters', function () {
+            expect('testing'.chop(3)).toBe('test');
+            expect('testing'.chop(-4)).toBe('ing');
+        });
+        it('should return null when num >= tmpStr.length', function () {
+            expect('*'.chop(1)).toBe(null);
+            expect('***'.chop(3)).toBe(null);
+            expect('***'.chop(5)).toBe(null);
+        });
+    });
+
+    /**
+    * check direct access to stringz#chop(tmpStr, num)
+    */
+    describe('stringz#chop(tmpStr, num)', function () {
+        it('should be able to remove characters', function () {
+            expect(stringz.chop('testing', 3)).toBe('test');
+        });
+    });
+
+    /**
      * Check string#fmt(args...) with indicies;
      */
     describe('#fmt(args...) using indicies', function () {
@@ -317,52 +413,5 @@ describe('String Utilz (Unit)', function () {
             expect(stringz.fmt('The %{2} %{s} %{0}', 'quick', 'brown', 'fox')).toBe('The fox quick quick');
         });
     });
-    
-    /**
-    * check stringz#times(tmpStr, num)
-    */
-    describe('stringz#times(tmpStr, num)', function () {
-        it('should return the string when multiplied by 1', function () {
-            expect(stringz.times('*', 1)).toBe('*');
-        });
-        it('should return double the string when multiplied by 2', function () {
-            expect(stringz.times('*', 2)).toBe('**');
-        });
-        it('should return multiples of the string when multiplied', function () {
-            expect(stringz.times('*', 10)).toBe('**********');
-        });
-        it('should return multiples of a complex string', function () {
-            expect(stringz.times('quick brown', 2)).toBe('quick brownquick brown');
-        });
-        it('should return null when multipled by 0', function () {
-            expect(stringz.times('*', 0)).toBe(null);
-        });
-        it('should return itself when multipled by a negative number', function () {
-            expect(stringz.times('*', -2)).toBe('*');
-        });
-    });
 
-    /**
-    * check stringz#pad(tmpStr, num, char)
-    */
-    describe('stringz#pad(tmpStr, num, char)', function () {
-        it('should use a space when no char is provided', function () {
-            expect(stringz.pad('*', 1)).toBe('* ');
-        });
-        it('should return the given string when num is 0', function () {
-            expect(stringz.pad('*', 0)).toBe('*');
-            expect(stringz.pad('*', 0, '-')).toBe('*');
-        });
-        it('should pad multiple times', function () {
-            expect(stringz.pad('*', 5, '-')).toBe('*-----');
-        });
-        it('should pad to the left when negative', function () {
-            expect(stringz.pad('*', -5, '-')).toBe('-----*');
-        });
-        it('should handle multiple chars', function () {
-            expect(stringz.pad('*', -2, 'bob')).toBe('bobbob*');
-            expect(stringz.pad('*', 2, 'bob')).toBe('*bobbob');
-            expect(stringz.pad('*', 2, '$$')).toBe('*$$$$');
-        });
-    });
 });

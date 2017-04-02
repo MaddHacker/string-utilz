@@ -1,3 +1,7 @@
+# 2017-04-02 - v1.2.0
+- Support `#chop` method to cut a string down
+- Fix some prototype issues + update tests to catch them
+
 # 2017-04-02 - v1.1.0
 - Update [Jest](https://www.npmjs.com/package/jest) version
 - Support `#times` method to multiply a string

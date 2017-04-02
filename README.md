@@ -41,10 +41,11 @@ Depending on the version of Node.js (or where your application is running), you 
 - `string#replaceAll(oldStr,newStr)` => replaces all instances of `oldStr` with `newStr` and returns a new `String`.  It is important to note that this will replace all instances, the existing `String#replace(oldStr,newStr)` only replaces the **first** instance.
 - `string#replaceAllIgnoreCase(oldStr,newStr)` => replaces all instances of `oldStr` with `newStr` and returns a new `String`.  It is important to note that this will replace all instances - without case sensitivity - the existing `String#replace(oldStr,newStr)` only replaces the **first** instance.
 - `string#escapeRegEx()` => escapes all special RegEx characters
-- `string#fmt(args...)` => extends the string object to support formatting.  This formatting can be done using simple `%{s}` replacements (in order of the `args...`) or the `args...` can be referenced using their 0-based indicies (e.g. `%{0}` or `%{2}`)  
-- `String.fmt(fmtString, args...)` => same functionality as `string#fmt(args...)`, just an extension of the `String` class, rather than object.
 - `string#times(num)` => returns the `String` multipled by `num`, multiplying by 0 => `null` and muliplying by 1 or any negative number returns the `String`
 - `string#pad(num,char)` => pads the given `String` `num` times using the given `char`.  `char` can be one or more characters, and is optional (default value is an empty space (`' '`)).  Negative `num` pads left, postive `num` pads right, and `0` as `num` doesn't pad.
+- `string#chop(num)` => chops the given `String` `num` characters from the end (`num` > 0) or from the beginnning (`num` < 0).
+- `string#fmt(args...)` => extends the string object to support formatting.  This formatting can be done using simple `%{s}` replacements (in order of the `args...`) or the `args...` can be referenced using their 0-based indicies (e.g. `%{0}` or `%{2}`)  
+- `String.fmt(fmtString, args...)` => same functionality as `string#fmt(args...)`, just an extension of the `String` class, rather than object.
 
 Usage examples:
 ```
@@ -80,18 +81,6 @@ Usage examples:
 '-'.escapeRegEx(); // '\-' 
 '{'.escapeRegEx(); // '\{'
 
-// fmt
-'The quick brown fox'.fmt('bob', 'frank') // 'The quick brown fox'
-'The %{2} %{0} %{1}'.fmt('quick', 'brown', 'fox'); // 'The fox quick brown'
-'The %{0} %{0} %{0}'.fmt('quick', 'brown', 'fox'); // 'The quick quick quick'
-'The %{s} %{s} %{s}'.fmt('quick', 'brown', 'fox'); // 'The quick brown fox'
-
-// String.fmt
-String.fmt('The quick brown fox', 'bob', 'frank'); // 'The quick brown fox'
-String.fmt('The %{2} %{0} %{1}', 'quick', 'brown', 'fox'); // 'The fox quick brown'
-String.fmt('The %{0} %{0} %{0}', 'quick', 'brown', 'fox'); // 'The quick quick quick'
-String.fmt('The %{s} %{s} %{s}', 'quick', 'brown', 'fox'); // 'The quick brown fox'
-
 // times
 '*'.times(2); // '**'
 'bob'.times(3); // 'bobbobbob'
@@ -103,7 +92,23 @@ String.fmt('The %{s} %{s} %{s}', 'quick', 'brown', 'fox'); // 'The quick brown f
 'frank'.pad(2, '-'); // 'frank--'
 'frank'.pad(-2,'-'); // '--frank'
 'bob'.pad(0); // 'bob'
-'bob'.pad(1 'frank'); // 'bobfrank' 
+'bob'.pad(1 'frank'); // 'bobfrank'
+
+// chop
+'testing'.chop(3); // 'test'
+'testing'.chop(-4); // 'ing'
+
+// fmt
+'The quick brown fox'.fmt('bob', 'frank') // 'The quick brown fox'
+'The %{2} %{0} %{1}'.fmt('quick', 'brown', 'fox'); // 'The fox quick brown'
+'The %{0} %{0} %{0}'.fmt('quick', 'brown', 'fox'); // 'The quick quick quick'
+'The %{s} %{s} %{s}'.fmt('quick', 'brown', 'fox'); // 'The quick brown fox'
+
+// String.fmt
+String.fmt('The quick brown fox', 'bob', 'frank'); // 'The quick brown fox'
+String.fmt('The %{2} %{0} %{1}', 'quick', 'brown', 'fox'); // 'The fox quick brown'
+String.fmt('The %{0} %{0} %{0}', 'quick', 'brown', 'fox'); // 'The quick quick quick'
+String.fmt('The %{s} %{s} %{s}', 'quick', 'brown', 'fox'); // 'The quick brown fox'
 
 ```
 
