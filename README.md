@@ -1,5 +1,5 @@
 # String Utilz
-String management for JavaScript.
+String management, tools and tricks for JavaScript.
 
 ## The Fun Stuff
 [![Build Status](https://secure.travis-ci.org/MaddHacker/string-utilz.svg?branch=master)](http://travis-ci.org/MaddHacker/string-utilz)
@@ -14,7 +14,7 @@ String management for JavaScript.
 
 [![npm Version](https://badge.fury.io/js/string-utilz.svg)](https://badge.fury.io/js/string-utilz)
 
-## Why *Another* Output/Logging tool?
+## Why *Another* String formatting tool?
 Several npms utilize multiple dependencies, and lead to code bloat.  There are also several modules on the market that are very opinionated (e.g. force you to do certain things) or are focused on a single form of string management.  This tool aims to be a lightweight, flexible solution that allows for infinitely customizable options to suit user needs.
 
 ## Getting Started
@@ -43,6 +43,8 @@ Depending on the version of Node.js (or where your application is running), you 
 - `string#escapeRegEx()` => escapes all special RegEx characters
 - `string#fmt(args...)` => extends the string object to support formatting.  This formatting can be done using simple `%{s}` replacements (in order of the `args...`) or the `args...` can be referenced using their 0-based indicies (e.g. `%{0}` or `%{2}`)  
 - `String.fmt(fmtString, args...)` => same functionality as `string#fmt(args...)`, just an extension of the `String` class, rather than object.
+- `string#times(num)` => returns the `String` multipled by `num`, multiplying by 0 => `null` and muliplying by 1 or any negative number returns the `String`
+- `string#pad(num,char)` => pads the given `String` `num` times using the given `char`.  `char` can be one or more characters, and is optional (default value is an empty space (`' '`)).  Negative `num` pads left, postive `num` pads right, and `0` as `num` doesn't pad.
 
 Usage examples:
 ```
@@ -89,6 +91,19 @@ String.fmt('The quick brown fox', 'bob', 'frank'); // 'The quick brown fox'
 String.fmt('The %{2} %{0} %{1}', 'quick', 'brown', 'fox'); // 'The fox quick brown'
 String.fmt('The %{0} %{0} %{0}', 'quick', 'brown', 'fox'); // 'The quick quick quick'
 String.fmt('The %{s} %{s} %{s}', 'quick', 'brown', 'fox'); // 'The quick brown fox'
+
+// times
+'*'.times(2); // '**'
+'bob'.times(3); // 'bobbobbob'
+'frank'.times(0); // null
+'frank'.times(-2); // 'frank'
+
+// pad
+'-'.pad(1); // '- '
+'frank'.pad(2, '-'); // 'frank--'
+'frank'.pad(-2,'-'); // '--frank'
+'bob'.pad(0); // 'bob'
+'bob'.pad(1 'frank'); // 'bobfrank' 
 
 ```
 

@@ -317,4 +317,52 @@ describe('String Utilz (Unit)', function () {
             expect(stringz.fmt('The %{2} %{s} %{0}', 'quick', 'brown', 'fox')).toBe('The fox quick quick');
         });
     });
+    
+    /**
+    * check stringz#times(tmpStr, num)
+    */
+    describe('stringz#times(tmpStr, num)', function () {
+        it('should return the string when multiplied by 1', function () {
+            expect(stringz.times('*', 1)).toBe('*');
+        });
+        it('should return double the string when multiplied by 2', function () {
+            expect(stringz.times('*', 2)).toBe('**');
+        });
+        it('should return multiples of the string when multiplied', function () {
+            expect(stringz.times('*', 10)).toBe('**********');
+        });
+        it('should return multiples of a complex string', function () {
+            expect(stringz.times('quick brown', 2)).toBe('quick brownquick brown');
+        });
+        it('should return null when multipled by 0', function () {
+            expect(stringz.times('*', 0)).toBe(null);
+        });
+        it('should return itself when multipled by a negative number', function () {
+            expect(stringz.times('*', -2)).toBe('*');
+        });
+    });
+
+    /**
+    * check stringz#pad(tmpStr, num, char)
+    */
+    describe('stringz#pad(tmpStr, num, char)', function () {
+        it('should use a space when no char is provided', function () {
+            expect(stringz.pad('*', 1)).toBe('* ');
+        });
+        it('should return the given string when num is 0', function () {
+            expect(stringz.pad('*', 0)).toBe('*');
+            expect(stringz.pad('*', 0, '-')).toBe('*');
+        });
+        it('should pad multiple times', function () {
+            expect(stringz.pad('*', 5, '-')).toBe('*-----');
+        });
+        it('should pad to the left when negative', function () {
+            expect(stringz.pad('*', -5, '-')).toBe('-----*');
+        });
+        it('should handle multiple chars', function () {
+            expect(stringz.pad('*', -2, 'bob')).toBe('bobbob*');
+            expect(stringz.pad('*', 2, 'bob')).toBe('*bobbob');
+            expect(stringz.pad('*', 2, '$$')).toBe('*$$$$');
+        });
+    });
 });

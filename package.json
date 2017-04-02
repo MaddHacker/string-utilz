@@ -1,6 +1,6 @@
 {
   "name": "string-utilz",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "String utilities for JavaScript.",
   "main": "lib/string-utilz.js",
   "scripts": {
