@@ -247,9 +247,9 @@ describe('String Utilz (Unit)', function () {
     });
 
     /**
-    * check string#times(num)
+    * check string#times(size)
     */
-    describe('#times(num)', function () {
+    describe('#times(size)', function () {
         it('should return the string when multiplied by 1', function () {
             expect('*'.times(1)).toBe('*');
         });
@@ -271,22 +271,22 @@ describe('String Utilz (Unit)', function () {
     });
 
     /**
-    * check direct access to stringz#times(tmpStr, num)
+    * check direct access to stringz#times(tmpStr, size)
     */
-    describe('stringz#times(tmpStr, num)', function () {
+    describe('stringz#times(tmpStr, size)', function () {
         it('should return the string when multiplied by 1', function () {
             expect(stringz.times('*', 1)).toBe('*');
         });
     });
 
     /**
-    * check string#pad(num, char)
+    * check string#pad(size, char)
     */
-    describe('#pad(num, char)', function () {
+    describe('#pad(size, char)', function () {
         it('should use a space when no char is provided', function () {
             expect('*'.pad(1)).toBe('* ');
         });
-        it('should return the given string when num is 0', function () {
+        it('should return the given string when size is 0', function () {
             expect('*'.pad(0)).toBe('*');
             expect('*'.pad(0, '-')).toBe('*');
         });
@@ -304,18 +304,18 @@ describe('String Utilz (Unit)', function () {
     });
 
     /**
-    * check direct access to stringz#pad(tmpStr, num, char)
+    * check direct access to stringz#pad(tmpStr, size, char)
     */
-    describe('stringz#pad(tmpStr, num, char)', function () {
+    describe('stringz#pad(tmpStr, size, char)', function () {
         it('should return the string when multiplied by 1', function () {
             expect(stringz.pad('*', 1)).toBe('* ');
         });
     });
 
     /**
-    * check string#chop(num)
+    * check string#chop(size)
     */
-    describe('#chop(num)', function () {
+    describe('#chop(size)', function () {
         it('should use a positive number to start at the end', function () {
             expect('testing'.chop(1)).toBe('testin');
         });
@@ -326,7 +326,7 @@ describe('String Utilz (Unit)', function () {
             expect('testing'.chop(3)).toBe('test');
             expect('testing'.chop(-4)).toBe('ing');
         });
-        it('should return null when num >= tmpStr.length', function () {
+        it('should return null when size >= tmpStr.length', function () {
             expect('*'.chop(1)).toBe(null);
             expect('***'.chop(3)).toBe(null);
             expect('***'.chop(5)).toBe(null);
@@ -334,11 +334,48 @@ describe('String Utilz (Unit)', function () {
     });
 
     /**
-    * check direct access to stringz#chop(tmpStr, num)
+    * check direct access to stringz#chop(tmpStr, size)
     */
-    describe('stringz#chop(tmpStr, num)', function () {
+    describe('stringz#chop(tmpStr, size)', function () {
         it('should be able to remove characters', function () {
             expect(stringz.chop('testing', 3)).toBe('test');
+        });
+    });
+
+    /**
+    * check string#fixSize(size, char)
+    */
+    describe('#fixSize(size, char)', function () {
+        it('should return null when size = 0', function () {
+            expect('testing'.fixSize(0)).toBe(null);
+        });
+        it('should use a space as a default char', function () {
+            expect('testing'.fixSize(10)).toBe('testing   ');
+        });
+        it('should use a positive number to start at the end', function () {
+            expect('testing'.fixSize(4)).toBe('test');
+            expect('testing'.fixSize(10, '-')).toBe('testing---');
+        });
+        it('should use a negative number to start at the beginning', function () {
+            expect('testing'.fixSize(-3)).toBe('ing');
+            expect('testing'.fixSize(-10, '-')).toBe('---testing');
+        });
+        it('should be able to chop', function () {
+            expect('testing'.fixSize(4)).toBe('test');
+            expect('testing'.fixSize(-3)).toBe('ing');
+        });
+        it('should be able to pad', function () {
+            expect('testing'.fixSize(10,'$')).toBe('testing$$$');
+            expect('testing'.fixSize(-10, '$')).toBe('$$$testing');
+        });
+    });
+
+    /**
+    * check direct access to stringz#fixSize(tmpStr, size, char)
+    */
+    describe('stringz#fixSize(tmpStr, size, char)', function () {
+        it('should return null when size = 0', function () {
+            expect(stringz.fixSize('testing', 0)).toBe(null);
         });
     });
 
