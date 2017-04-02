@@ -1,3 +1,6 @@
+# 2017-04-02 - v1.3.0
+- Support `#fixSize` method to chop or pad a string as needed
+
 # 2017-04-02 - v1.2.0
 - Support `#chop` method to cut a string down
 - Fix some prototype issues + update tests to catch them

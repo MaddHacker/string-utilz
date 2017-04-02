@@ -41,9 +41,10 @@ Depending on the version of Node.js (or where your application is running), you 
 - `string#replaceAll(oldStr,newStr)` => replaces all instances of `oldStr` with `newStr` and returns a new `String`.  It is important to note that this will replace all instances, the existing `String#replace(oldStr,newStr)` only replaces the **first** instance.
 - `string#replaceAllIgnoreCase(oldStr,newStr)` => replaces all instances of `oldStr` with `newStr` and returns a new `String`.  It is important to note that this will replace all instances - without case sensitivity - the existing `String#replace(oldStr,newStr)` only replaces the **first** instance.
 - `string#escapeRegEx()` => escapes all special RegEx characters
-- `string#times(num)` => returns the `String` multipled by `num`, multiplying by 0 => `null` and muliplying by 1 or any negative number returns the `String`
-- `string#pad(num,char)` => pads the given `String` `num` times using the given `char`.  `char` can be one or more characters, and is optional (default value is an empty space (`' '`)).  Negative `num` pads left, postive `num` pads right, and `0` as `num` doesn't pad.
-- `string#chop(num)` => chops the given `String` `num` characters from the end (`num` > 0) or from the beginnning (`num` < 0).
+- `string#times(size)` => returns the `String` multipled by `size`, multiplying by 0 => `null` and muliplying by 1 or any negative number returns the `String`
+- `string#pad(size,char)` => pads the given `String` `size` times using the given `char`.  `char` can be one or more characters, and is optional (default value is an empty space (`' '`)).  Negative `size` pads left, postive `size` pads right, and `0` as `size` doesn't pad.
+- `string#chop(size)` => chops the given `String` `size` characters from the end (`size` > 0) or from the beginnning (`size` < 0).
+- `string#fixSize(size, char)` => pads or chops the given `String` as needed, to make `string.length == Math.abs(size)`.  Positive values of `size` chop from the right or pad on the right, negative values of `size` chop from the left or pad to the left
 - `string#fmt(args...)` => extends the string object to support formatting.  This formatting can be done using simple `%{s}` replacements (in order of the `args...`) or the `args...` can be referenced using their 0-based indicies (e.g. `%{0}` or `%{2}`)  
 - `String.fmt(fmtString, args...)` => same functionality as `string#fmt(args...)`, just an extension of the `String` class, rather than object.
 
@@ -97,6 +98,13 @@ Usage examples:
 // chop
 'testing'.chop(3); // 'test'
 'testing'.chop(-4); // 'ing'
+
+// fixSize
+'testing'.fixSize(4); // 'test'
+'testing'.fixSize(-3); // 'ing'
+'testing'.fixSize(10, '-'); // 'testing---'
+'testing'.fixSize(-10, '-'); // '---testing'
+'testing'.fixSize(8); // 'testing '
 
 // fmt
 'The quick brown fox'.fmt('bob', 'frank') // 'The quick brown fox'
