@@ -4,7 +4,7 @@
   "description": "String utilities for JavaScript.",
   "main": "lib/string-utilz.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage --colors"
   },
   "repository": {
     "type": "git",
@@ -24,9 +24,13 @@
     "string formatting",
     "formatting"
   ],
-  "author": "MaddHacker <hacker@maddhacker.com> (http://www.maddhacker.com)",
+  "author": "MaddHacker <hacker@maddhacker.com> (https://www.maddhacker.com)",
   "license": "Apache-2.0",
   "homepage": "https://github.com/MaddHacker/string-utilz#readme",
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=2.14.2"
+  },
   "dependencies": {},
   "devDependencies": {
     "jest": "^19.0.2"
