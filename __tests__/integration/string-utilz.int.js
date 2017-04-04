@@ -18,9 +18,9 @@
 
 require('../../lib/string-utilz');
 
-describe('String Utilz (Integration)', function () {
-    describe('TBD', function () {
-        it('no integration tests needed yet', function () {
+describe('String Utilz (Integration)', () => {
+    describe('TBD', () => {
+        it('no integration tests needed yet', () => {
             expect(true).toBe(true);
         });
     });

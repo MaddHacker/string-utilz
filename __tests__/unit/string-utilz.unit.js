@@ -19,10 +19,10 @@
 const stringz = require('../../lib/string-utilz');
 stringz.addStringPrototypes();
 
-describe('String Utilz (Unit)', function () {
+describe('String Utilz (Unit)', () => {
 
-    describe('#replace() => built-in', function () {
-        it('should exist', function () {
+    describe('#replace() => built-in', () => {
+        it('should exist', () => {
             expect(typeof String.prototype.replace).toBe('function');
         });
     });
@@ -30,17 +30,17 @@ describe('String Utilz (Unit)', function () {
     /**
      * Check string#startsWith(val);
      */
-    describe('#startsWith(str)', function () {
-        it('should return true when the string starts with the given value', function () {
+    describe('#startsWith(str)', () => {
+        it('should return true when the string starts with the given value', () => {
             expect('Bob'.startsWith('B')).toBe(true);
         });
-        it('should be case sensitive', function () {
+        it('should be case sensitive', () => {
             expect('Bob'.startsWith('b')).toBe(false);
         });
-        it('should respect many characters', function () {
+        it('should respect many characters', () => {
             expect('Franklin'.startsWith('Frank')).toBe(true);
         });
-        it('should be able to handle spaces', function () {
+        it('should be able to handle spaces', () => {
             expect('The quick brown fox'.startsWith('The quick')).toBe(true);
         });
     });
@@ -48,8 +48,8 @@ describe('String Utilz (Unit)', function () {
     /**
      * check direct access to stringz#startsWith(tmpStr, matchStr)
      */
-    describe('stringz#startsWith(tmpStr, matchStr)', function () {
-        it('should return true when the string starts with the given value', function () {
+    describe('stringz#startsWith(tmpStr, matchStr)', () => {
+        it('should return true when the string starts with the given value', () => {
             expect(stringz.startsWith('Bob', 'B')).toBe(true);
         });
     });
@@ -57,17 +57,17 @@ describe('String Utilz (Unit)', function () {
     /**
      * Check string#endsWith(val);
      */
-    describe('#endsWith(str)', function () {
-        it('should return true when the string ends with the given value', function () {
+    describe('#endsWith(str)', () => {
+        it('should return true when the string ends with the given value', () => {
             expect('Bob'.endsWith('b')).toBe(true);
         });
-        it('should be case sensitive', function () {
+        it('should be case sensitive', () => {
             expect('Bob'.endsWith('B')).toBe(false);
         });
-        it('should respect many characters', function () {
+        it('should respect many characters', () => {
             expect('Franklin'.endsWith('lin')).toBe(true);
         });
-        it('should be able to handle spaces', function () {
+        it('should be able to handle spaces', () => {
             expect('The quick brown fox'.endsWith('brown fox')).toBe(true);
         });
     });
@@ -75,8 +75,8 @@ describe('String Utilz (Unit)', function () {
     /**
      * check direct access to stringz#endsWith(tmpStr, matchStr)
      */
-    describe('stringz#endsWith(tmpStr, matchStr)', function () {
-        it('should return true when the string ends with the given value', function () {
+    describe('stringz#endsWith(tmpStr, matchStr)', () => {
+        it('should return true when the string ends with the given value', () => {
             expect(stringz.endsWith('Bob', 'b')).toBe(true);
         });
     });
@@ -84,20 +84,20 @@ describe('String Utilz (Unit)', function () {
     /**
      * Check string#containsIgnoreCase(val);
      */
-    describe('#containsIgnoreCase(str)', function () {
-        it('should return true when the string contains the given value', function () {
+    describe('#containsIgnoreCase(str)', () => {
+        it('should return true when the string contains the given value', () => {
             expect('Bob'.containsIgnoreCase('b')).toBe(true);
         });
-        it('should be case insensitive', function () {
+        it('should be case insensitive', () => {
             expect('BOB'.containsIgnoreCase('b')).toBe(true);
         });
-        it('should have no false positives', function () {
+        it('should have no false positives', () => {
             expect('The quick brown'.containsIgnoreCase('x')).toBe(false);
         });
-        it('should respect many characters', function () {
+        it('should respect many characters', () => {
             expect('Franklin'.containsIgnoreCase('ankl')).toBe(true);
         });
-        it('should be able to handle spaces', function () {
+        it('should be able to handle spaces', () => {
             expect('The quick brown fox'.containsIgnoreCase('ck bro')).toBe(true);
         });
     });
@@ -105,8 +105,8 @@ describe('String Utilz (Unit)', function () {
     /**
      * check direct access to stringz#containsIgnoreCase(tmpStr, matchStr)
      */
-    describe('stringz#containsIgnoreCase(tmpStr, matchStr)', function () {
-        it('should return true when the string contains the given value', function () {
+    describe('stringz#containsIgnoreCase(tmpStr, matchStr)', () => {
+        it('should return true when the string contains the given value', () => {
             expect(stringz.containsIgnoreCase('Bob', 'o')).toBe(true);
         });
     });
@@ -114,26 +114,26 @@ describe('String Utilz (Unit)', function () {
     /**
      * Check string#replaceAll(oldStr,newStr);
      */
-    describe('#replaceAll(oldStr,newStr)', function () {
-        it('should return the same string when the replace value does not match anything', function () {
+    describe('#replaceAll(oldStr,newStr)', () => {
+        it('should return the same string when the replace value does not match anything', () => {
             expect('The quick brown fox'.replaceAll('bob', 'frank')).toBe('The quick brown fox');
         });
-        it('should replace one character', function () {
+        it('should replace one character', () => {
             expect('Bob'.replaceAll('o', 'i')).toBe('Bib');
         });
-        it('should replace all instances of a character', function () {
+        it('should replace all instances of a character', () => {
             expect('Bobby'.replaceAll('b', 'd')).toBe('Boddy');
         });
-        it('should be case sensitive', function () {
+        it('should be case sensitive', () => {
             expect('Box'.replaceAll('b', 'd')).toBe('Box');
         });
-        it('should respect spaces', function () {
+        it('should respect spaces', () => {
             expect('Thequickbrownfox', 'The quick brown fox'.replaceAll(' ', '')).toBe('Thequickbrownfox');
         });
-        it('should be able to change the first character', function () {
+        it('should be able to change the first character', () => {
             expect('mitten'.replaceAll('m', 'k')).toBe('kitten');
         });
-        it('should respect words', function () {
+        it('should respect words', () => {
             expect('baa baa black sheep'.replaceAll('baa', 'meow')).toBe('meow meow black sheep');
         });
     });
@@ -141,8 +141,8 @@ describe('String Utilz (Unit)', function () {
     /**
     * check direct access to stringz#replaceAll(tmpStr, oldStr, newStr)
     */
-    describe('stringz#replaceAll(tmpStr, oldStr, newStr)', function () {
-        it('should replace one character', function () {
+    describe('stringz#replaceAll(tmpStr, oldStr, newStr)', () => {
+        it('should replace one character', () => {
             expect(stringz.replaceAll('Bob', 'o', 'i')).toBe('Bib');
         });
     });
@@ -150,26 +150,26 @@ describe('String Utilz (Unit)', function () {
     /**
      * Check string#replaceAllIgnoreCase(oldStr,newStr);
      */
-    describe('#replaceAll(oldStr,newStr)', function () {
-        it('should return the same string when the replace value does not match anything', function () {
+    describe('#replaceAll(oldStr,newStr)', () => {
+        it('should return the same string when the replace value does not match anything', () => {
             expect('The quick brown fox'.replaceAllIgnoreCase('bob', 'frank')).toBe('The quick brown fox');
         });
-        it('should replace one character', function () {
+        it('should replace one character', () => {
             expect('Bob'.replaceAllIgnoreCase('o', 'i')).toBe('Bib');
         });
-        it('should replace all instances of a character', function () {
+        it('should replace all instances of a character', () => {
             expect('Bobby'.replaceAllIgnoreCase('b', 'd')).toBe('doddy');
         });
-        it('should be case sensitive', function () {
+        it('should be case sensitive', () => {
             expect('Box'.replaceAllIgnoreCase('b', 'd')).toBe('dox');
         });
-        it('should respect spaces', function () {
+        it('should respect spaces', () => {
             expect('Thequickbrownfox', 'The quick brown fox'.replaceAllIgnoreCase(' ', '')).toBe('Thequickbrownfox');
         });
-        it('should be able to change the first character', function () {
+        it('should be able to change the first character', () => {
             expect('mitten'.replaceAllIgnoreCase('m', 'k')).toBe('kitten');
         });
-        it('should respect words', function () {
+        it('should respect words', () => {
             expect('Baa baa black sheep'.replaceAllIgnoreCase('baa', 'meow')).toBe('meow meow black sheep');
         });
     });
@@ -177,8 +177,8 @@ describe('String Utilz (Unit)', function () {
     /**
     * check direct access to stringz#replaceAllIgnoreCase(tmpStr, oldStr, newStr)
     */
-    describe('stringz#replaceAllIgnoreCase(tmpStr, oldStr, newStr)', function () {
-        it('should replace all instances of a character, regardless of case', function () {
+    describe('stringz#replaceAllIgnoreCase(tmpStr, oldStr, newStr)', () => {
+        it('should replace all instances of a character, regardless of case', () => {
             expect(stringz.replaceAllIgnoreCase('Bob', 'b', 'm')).toBe('mom');
         });
     });
@@ -186,53 +186,53 @@ describe('String Utilz (Unit)', function () {
     /**
      * Check string#escapeRegEx()
      */
-    describe('#escapeRegEx() using indicies', function () {
-        it('should escape -', function () {
+    describe('#escapeRegEx() using indicies', () => {
+        it('should escape -', () => {
             expect('-'.escapeRegEx()).toBe('\\-');
         });
-        it('should escape [', function () {
+        it('should escape [', () => {
             expect('['.escapeRegEx()).toBe('\\[');
         });
-        it('should escape ]', function () {
+        it('should escape ]', () => {
             expect(']'.escapeRegEx()).toBe('\\]');
         });
-        it('should escape /', function () {
+        it('should escape /', () => {
             expect('/'.escapeRegEx()).toBe('\\/');
         });
-        it('should escape {', function () {
+        it('should escape {', () => {
             expect('{'.escapeRegEx()).toBe('\\{');
         });
-        it('should escape }', function () {
+        it('should escape }', () => {
             expect('}'.escapeRegEx()).toBe('\\}');
         });
-        it('should escape (', function () {
+        it('should escape (', () => {
             expect('('.escapeRegEx()).toBe('\\(');
         });
-        it('should escape )', function () {
+        it('should escape )', () => {
             expect(')'.escapeRegEx()).toBe('\\)');
         });
-        it('should escape *', function () {
+        it('should escape *', () => {
             expect('*'.escapeRegEx()).toBe('\\*');
         });
-        it('should escape +', function () {
+        it('should escape +', () => {
             expect('+'.escapeRegEx()).toBe('\\+');
         });
-        it('should escape ?', function () {
+        it('should escape ?', () => {
             expect('?'.escapeRegEx()).toBe('\\?');
         });
-        it('should escape .', function () {
+        it('should escape .', () => {
             expect('.'.escapeRegEx()).toBe('\\.');
         });
-        it('should escape \\ ', function () {
+        it('should escape \\ ', () => {
             expect('\ '.escapeRegEx()).toBe(' ');
         });
-        it('should escape ^', function () {
+        it('should escape ^', () => {
             expect('^'.escapeRegEx()).toBe('\\^');
         });
-        it('should escape $', function () {
+        it('should escape $', () => {
             expect('$'.escapeRegEx()).toBe('\\$');
         });
-        it('should escape |', function () {
+        it('should escape |', () => {
             expect('|'.escapeRegEx()).toBe('\\|');
         });
     });
@@ -240,8 +240,8 @@ describe('String Utilz (Unit)', function () {
     /**
     * check direct access to stringz#escapeRegEx(tmpStr)
     */
-    describe('stringz#escapeRegEx(tmpStr)', function () {
-        it('should escape -', function () {
+    describe('stringz#escapeRegEx(tmpStr)', () => {
+        it('should escape -', () => {
             expect(stringz.escapeRegEx('-')).toBe('\\-');
         });
     });
@@ -249,23 +249,23 @@ describe('String Utilz (Unit)', function () {
     /**
     * check string#times(size)
     */
-    describe('#times(size)', function () {
-        it('should return the string when multiplied by 1', function () {
+    describe('#times(size)', () => {
+        it('should return the string when multiplied by 1', () => {
             expect('*'.times(1)).toBe('*');
         });
-        it('should return double the string when multiplied by 2', function () {
+        it('should return double the string when multiplied by 2', () => {
             expect('*'.times(2)).toBe('**');
         });
-        it('should return multiples of the string when multiplied', function () {
+        it('should return multiples of the string when multiplied', () => {
             expect('*'.times(10)).toBe('**********');
         });
-        it('should return multiples of a complex string', function () {
+        it('should return multiples of a complex string', () => {
             expect('quick brown'.times(2)).toBe('quick brownquick brown');
         });
-        it('should return null when multipled by 0', function () {
+        it('should return null when multipled by 0', () => {
             expect('*'.times(0)).toBe(null);
         });
-        it('should return itself when multipled by a negative number', function () {
+        it('should return itself when multipled by a negative number', () => {
             expect('*'.times(-2)).toBe('*');
         });
     });
@@ -273,8 +273,8 @@ describe('String Utilz (Unit)', function () {
     /**
     * check direct access to stringz#times(tmpStr, size)
     */
-    describe('stringz#times(tmpStr, size)', function () {
-        it('should return the string when multiplied by 1', function () {
+    describe('stringz#times(tmpStr, size)', () => {
+        it('should return the string when multiplied by 1', () => {
             expect(stringz.times('*', 1)).toBe('*');
         });
     });
@@ -282,21 +282,21 @@ describe('String Utilz (Unit)', function () {
     /**
     * check string#pad(size, char)
     */
-    describe('#pad(size, char)', function () {
-        it('should use a space when no char is provided', function () {
+    describe('#pad(size, char)', () => {
+        it('should use a space when no char is provided', () => {
             expect('*'.pad(1)).toBe('* ');
         });
-        it('should return the given string when size is 0', function () {
+        it('should return the given string when size is 0', () => {
             expect('*'.pad(0)).toBe('*');
             expect('*'.pad(0, '-')).toBe('*');
         });
-        it('should pad multiple times', function () {
+        it('should pad multiple times', () => {
             expect('*'.pad(5, '-')).toBe('*-----');
         });
-        it('should pad to the left when negative', function () {
+        it('should pad to the left when negative', () => {
             expect('*'.pad(-5, '-')).toBe('-----*');
         });
-        it('should handle multiple chars', function () {
+        it('should handle multiple chars', () => {
             expect('*'.pad(-2, 'bob')).toBe('bobbob*');
             expect('*'.pad(2, 'bob')).toBe('*bobbob');
             expect('*'.pad(2, '$$')).toBe('*$$$$');
@@ -306,8 +306,8 @@ describe('String Utilz (Unit)', function () {
     /**
     * check direct access to stringz#pad(tmpStr, size, char)
     */
-    describe('stringz#pad(tmpStr, size, char)', function () {
-        it('should return the string when multiplied by 1', function () {
+    describe('stringz#pad(tmpStr, size, char)', () => {
+        it('should return the string when multiplied by 1', () => {
             expect(stringz.pad('*', 1)).toBe('* ');
         });
     });
@@ -315,18 +315,18 @@ describe('String Utilz (Unit)', function () {
     /**
     * check string#chop(size)
     */
-    describe('#chop(size)', function () {
-        it('should use a positive number to start at the end', function () {
+    describe('#chop(size)', () => {
+        it('should use a positive number to start at the end', () => {
             expect('testing'.chop(1)).toBe('testin');
         });
-        it('should use a negative number to start at the beginning', function () {
+        it('should use a negative number to start at the beginning', () => {
             expect('testing'.chop(-1)).toBe('esting');
         });
-        it('should remove the required characters', function () {
+        it('should remove the required characters', () => {
             expect('testing'.chop(3)).toBe('test');
             expect('testing'.chop(-4)).toBe('ing');
         });
-        it('should return null when size >= tmpStr.length', function () {
+        it('should return null when size >= tmpStr.length', () => {
             expect('*'.chop(1)).toBe(null);
             expect('***'.chop(3)).toBe(null);
             expect('***'.chop(5)).toBe(null);
@@ -336,8 +336,8 @@ describe('String Utilz (Unit)', function () {
     /**
     * check direct access to stringz#chop(tmpStr, size)
     */
-    describe('stringz#chop(tmpStr, size)', function () {
-        it('should be able to remove characters', function () {
+    describe('stringz#chop(tmpStr, size)', () => {
+        it('should be able to remove characters', () => {
             expect(stringz.chop('testing', 3)).toBe('test');
         });
     });
@@ -345,27 +345,27 @@ describe('String Utilz (Unit)', function () {
     /**
     * check string#fixSize(size, char)
     */
-    describe('#fixSize(size, char)', function () {
-        it('should return null when size = 0', function () {
+    describe('#fixSize(size, char)', () => {
+        it('should return null when size = 0', () => {
             expect('testing'.fixSize(0)).toBe(null);
         });
-        it('should use a space as a default char', function () {
+        it('should use a space as a default char', () => {
             expect('testing'.fixSize(10)).toBe('testing   ');
         });
-        it('should use a positive number to start at the end', function () {
+        it('should use a positive number to start at the end', () => {
             expect('testing'.fixSize(4)).toBe('test');
             expect('testing'.fixSize(10, '-')).toBe('testing---');
         });
-        it('should use a negative number to start at the beginning', function () {
+        it('should use a negative number to start at the beginning', () => {
             expect('testing'.fixSize(-3)).toBe('ing');
             expect('testing'.fixSize(-10, '-')).toBe('---testing');
         });
-        it('should be able to chop', function () {
+        it('should be able to chop', () => {
             expect('testing'.fixSize(4)).toBe('test');
             expect('testing'.fixSize(-3)).toBe('ing');
         });
-        it('should be able to pad', function () {
-            expect('testing'.fixSize(10,'$')).toBe('testing$$$');
+        it('should be able to pad', () => {
+            expect('testing'.fixSize(10, '$')).toBe('testing$$$');
             expect('testing'.fixSize(-10, '$')).toBe('$$$testing');
         });
     });
@@ -373,8 +373,8 @@ describe('String Utilz (Unit)', function () {
     /**
     * check direct access to stringz#fixSize(tmpStr, size, char)
     */
-    describe('stringz#fixSize(tmpStr, size, char)', function () {
-        it('should return null when size = 0', function () {
+    describe('stringz#fixSize(tmpStr, size, char)', () => {
+        it('should return null when size = 0', () => {
             expect(stringz.fixSize('testing', 0)).toBe(null);
         });
     });
@@ -382,29 +382,29 @@ describe('String Utilz (Unit)', function () {
     /**
      * Check string#fmt(args...) with indicies;
      */
-    describe('#fmt(args...) using indicies', function () {
-        it('should return the same string when there are no fmt args', function () {
+    describe('#fmt(args...) using indicies', () => {
+        it('should return the same string when there are no fmt args', () => {
             expect('The quick brown fox'.fmt('bob', 'frank')).toBe('The quick brown fox');
         });
-        it('should not replace open "{" at the beginning', function () {
+        it('should not replace open "{" at the beginning', () => {
             expect('The %{s %{s} %{2}'.fmt('quick', 'brown', 'fox')).toBe('The %{s quick fox');
         });
-        it('should not replace open "{" all over the place', function () {
+        it('should not replace open "{" all over the place', () => {
             expect('The %{s %{0} %{1 %{s} %{2} %{1'.fmt('quick', 'brown', 'fox')).toBe('The %{s quick %{1 quick fox %{1');
         });
-        it('should support indicies in the "{}"', function () {
+        it('should support indicies in the "{}"', () => {
             expect('The %{0} %{1} %{2}'.fmt('quick', 'brown', 'fox')).toBe('The quick brown fox');
         });
-        it('should support indicies out of order in the "{}"', function () {
+        it('should support indicies out of order in the "{}"', () => {
             expect('The %{2} %{0} %{1}'.fmt('quick', 'brown', 'fox')).toBe('The fox quick brown');
         });
-        it('should support indicies and the "s" mixed in the "{}"', function () {
+        it('should support indicies and the "s" mixed in the "{}"', () => {
             expect('The %{0} %{s} %{2}'.fmt('quick', 'brown', 'fox')).toBe('The quick quick fox');
         });
-        it('should support indicies out of order and the "s" mixed in the "{}"', function () {
+        it('should support indicies out of order and the "s" mixed in the "{}"', () => {
             expect('The %{2} %{s} %{0}'.fmt('quick', 'brown', 'fox')).toBe('The fox quick quick');
         });
-        it('should support repeated indicies', function () {
+        it('should support repeated indicies', () => {
             expect('The %{0} %{0} %{0}'.fmt('quick', 'brown', 'fox')).toBe('The quick quick quick');
         });
     });
@@ -412,32 +412,32 @@ describe('String Utilz (Unit)', function () {
     /**
      * Check string#fmt(args...) with simple string replacement;
      */
-    describe('#fmt(args...) with simple string replacement', function () {
-        it('should return the same string when there are no fmt args', function () {
+    describe('#fmt(args...) with simple string replacement', () => {
+        it('should return the same string when there are no fmt args', () => {
             expect('The quick brown fox'.fmt('bob', 'frank')).toBe('The quick brown fox');
         });
-        it('should replace strings in order', function () {
+        it('should replace strings in order', () => {
             expect('The %{s} %{s} %{s}'.fmt('quick', 'brown', 'fox')).toBe('The quick brown fox');
         });
-        it('should respect the "%%" as an escape strings in order', function () {
+        it('should respect the "%%" as an escape strings in order', () => {
             expect('The %%{s} %%{s} %%{s}'.fmt('quick', 'brown', 'fox')).toBe('The %%{s} %%{s} %%{s}');
         });
-        it('should respect the "%%" as an escape string, mixed with replacements', function () {
+        it('should respect the "%%" as an escape string, mixed with replacements', () => {
             expect('The %{s} %{s} %%{s}'.fmt('quick', 'brown', 'fox')).toBe('The quick brown %%{s}');
         });
-        it('should not replace open "{" at the end', function () {
+        it('should not replace open "{" at the end', () => {
             expect('The %{s} %{s} %{2'.fmt('quick', 'brown', 'fox')).toBe('The quick brown %{2');
         });
-        it('should not replace open "{" at the beginning', function () {
+        it('should not replace open "{" at the beginning', () => {
             expect('The %{s %{s} %{2}'.fmt('quick', 'brown', 'fox')).toBe('The %{s quick fox');
         });
-        it('should not replace open "{" all over the place', function () {
+        it('should not replace open "{" all over the place', () => {
             expect('The %{s %{0} %{1 %{s} %{2} %{1'.fmt('quick', 'brown', 'fox')).toBe('The %{s quick %{1 quick fox %{1');
         });
-        it('should support indicies and the "s" mixed in the "{}"', function () {
+        it('should support indicies and the "s" mixed in the "{}"', () => {
             expect('The %{0} %{s} %{2}'.fmt('quick', 'brown', 'fox')).toBe('The quick quick fox');
         });
-        it('should support indicies out of order and the "s" mixed in the "{}"', function () {
+        it('should support indicies out of order and the "s" mixed in the "{}"', () => {
             expect('The %{2} %{s} %{0}'.fmt('quick', 'brown', 'fox')).toBe('The fox quick quick');
         });
     });
@@ -445,8 +445,8 @@ describe('String Utilz (Unit)', function () {
     /**
     * check direct access to stringz#fmt(tmpStr, args...)
     */
-    describe('stringz#fmt(tmpStr, args...)', function () {
-        it('should support indicies out of order and the "s" mixed in the "{}"', function () {
+    describe('stringz#fmt(tmpStr, args...)', () => {
+        it('should support indicies out of order and the "s" mixed in the "{}"', () => {
             expect(stringz.fmt('The %{2} %{s} %{0}', 'quick', 'brown', 'fox')).toBe('The fox quick quick');
         });
     });
