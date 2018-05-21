@@ -25,6 +25,10 @@
     "formatting"
   ],
   "author": "MaddHacker <hacker@maddhacker.com> (https://www.maddhacker.com)",
+  "contributors": [
+    "MaddHacker <hacker@maddhacker.com> (https://www.maddhacker.com)",
+    "theFieryDev <thefierydev@gmail.com> (https://www.thefierydev.com)"
+  ],
   "license": "Apache-2.0",
   "homepage": "https://github.com/MaddHacker/string-utilz#readme",
   "engines": {
