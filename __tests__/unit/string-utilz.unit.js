@@ -128,7 +128,10 @@ describe('String Utilz (Unit)', () => {
             expect('Box'.replaceAll('b', 'd')).toBe('Box');
         });
         it('should respect spaces', () => {
-            expect('Thequickbrownfox', 'The quick brown fox'.replaceAll(' ', '')).toBe('Thequickbrownfox');
+            expect('The quick brown fox'.replaceAll('\ ', '')).toBe('Thequickbrownfox');
+        });
+        it('should replace spaces', () => {
+            expect('The quick brown fox'.replaceAll(' ', '_')).toBe('The_quick_brown_fox');
         });
         it('should be able to change the first character', () => {
             expect('mitten'.replaceAll('m', 'k')).toBe('kitten');
@@ -164,7 +167,10 @@ describe('String Utilz (Unit)', () => {
             expect('Box'.replaceAllIgnoreCase('b', 'd')).toBe('dox');
         });
         it('should respect spaces', () => {
-            expect('Thequickbrownfox', 'The quick brown fox'.replaceAllIgnoreCase(' ', '')).toBe('Thequickbrownfox');
+            expect('The quick brown fox'.replaceAllIgnoreCase(' ', '')).toBe('Thequickbrownfox');
+        });
+        it('should replace spaces', () => {
+            expect('The quick brown fox'.replaceAllIgnoreCase(' ', '_')).toBe('The_quick_brown_fox');
         });
         it('should be able to change the first character', () => {
             expect('mitten'.replaceAllIgnoreCase('m', 'k')).toBe('kitten');
