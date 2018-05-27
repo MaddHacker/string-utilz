@@ -413,6 +413,9 @@ describe('String Utilz (Unit)', () => {
         it('should support repeated indicies', () => {
             expect('The %{0} %{0} %{0}'.fmt('quick', 'brown', 'fox')).toBe('The quick quick quick');
         });
+        it('should support repeated "s" in the “{}"', () => {
+            expect('The %{s} %{s} %{s}'.fmt('quick', 'brown', 'fox')).toBe('The quick brown fox');
+        });
     });
 
     /**
@@ -445,6 +448,9 @@ describe('String Utilz (Unit)', () => {
         });
         it('should support indicies out of order and the "s" mixed in the "{}"', () => {
             expect('The %{2} %{s} %{0}'.fmt('quick', 'brown', 'fox')).toBe('The fox quick quick');
+        });
+        it('should support repeated "s" in the “{}"', () => {
+            expect('The %{s} %{s} %{s}'.fmt('quick', 'brown', 'fox')).toBe('The quick brown fox');
         });
     });
 
