@@ -28,6 +28,25 @@ describe('String Utilz (Unit)', () => {
     });
 
     /**
+    * check string#combineStr(tmpStr1, tmpStr2)
+    */
+
+   describe('#combineStr(tmpStr1, tmpStr)', () => {
+        it('should return true when the string starts with the given value', () => {
+            expect('Hello '.combineStr('Monday')).toBe('Hello Monday');
+        });
+        it('should be case sensitive', () => {
+            expect('hello '.combineStr('Monday')).toBe('hello Monday');
+        });
+        it('should be able to handle spaces', () => {
+            expect('Hello    '.combineStr('Monday')).toBe('Hello Monday');
+        });
+        it('should be able to handle spaces', () => {
+            expect('Hello '.combineStr(' Monday')).toBe('Hello Monday');
+        });
+    });
+
+    /**
      * Check string#startsWith(val);
      */
     describe('#startsWith(str)', () => {
