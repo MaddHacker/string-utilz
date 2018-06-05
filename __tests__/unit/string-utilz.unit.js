@@ -74,6 +74,12 @@ describe('String Utilz (Unit)', () => {
         it('should return correct string for num ', () => {
             expect('123456'.numToStr()).toBe('one hundred twenty three thousand four hundred fifty six');
         });
+        it('should return correct string for num including 0', () => {
+            expect('12305'.numToStr()).toBe('twelve thousand three hundred five');
+        });
+        it('should return correct string for num including 0', () => {
+            expect('123056'.numToStr()).toBe('one hundred twenty three thousand fifty six');
+        });
         // it('should return correct string for num ', () => {
         //     expect('123456789'.numToStr()).toBe('twelve thousand four hundred fifty six');
         // });
