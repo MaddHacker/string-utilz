@@ -46,45 +46,6 @@ describe('String Utilz (Unit)', () => {
         });
     });
 
-    /** 
-     * Check string#numToStr(tmpStr) 
-     */
-    describe('#numToStr(num)', () => {
-        it('should return a string', () => {
-            expect('122'.numToStr()).toBe('one hundred twenty two');
-        });
-        it('should return error message when digit exceed limit 21', () => {
-            expect('10000000000000'.numToStr()).toBe('Error: Exceede length limit');
-        });
-        it('should return correct string for num has 3* digit', () => {
-            expect('2000'.numToStr()).toBe('two thousand');
-        });
-        it('should return correct string for num has 3* digit', () => {
-            expect('1000000'.numToStr()).toBe('one million');
-        });
-        it('should return correct string for num is not 3* digit', () => {
-            expect('12000'.numToStr()).toBe('twelve thousand');
-        });
-        it('should return correct string for num is not 3* digit', () => {
-            expect('666000'.numToStr()).toBe('six hundrend sixteen six thousand');
-        });
-        it('should return correct string for num ', () => {
-            expect('12345'.numToStr()).toBe('twelve thousand three hundred forty five');
-        });
-        it('should return correct string for num ', () => {
-            expect('123456'.numToStr()).toBe('one hundred twenty three thousand four hundred fifty six');
-        });
-        it('should return correct string for num including 0', () => {
-            expect('12305'.numToStr()).toBe('twelve thousand three hundred five');
-        });
-        it('should return correct string for num including 0', () => {
-            expect('123056'.numToStr()).toBe('one hundred twenty three thousand fifty six');
-        });
-        // it('should return correct string for num ', () => {
-        //     expect('123456789'.numToStr()).toBe('twelve thousand four hundred fifty six');
-        // });
-    });
-
     /**
      * Check string#startsWith(val);
      */
