@@ -1,3 +1,6 @@
+# 2020-03-10 - v1.4.0
+- Update dependencies and `.travis.yml` config
+
 # 2017-04-02 - v1.3.0
 - Support `#fixSize` method to chop or pad a string as needed
 
